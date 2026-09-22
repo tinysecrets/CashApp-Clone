@@ -7,13 +7,13 @@
 <link rel="manifest" href="manifest.webmanifest">
 <title>Cash App</title>
 <style>
-:root{--green:#00d632;--ink:#111;--muted:#707070;--line:#e9e9e9;--bg:#f7f7f7}
+:root{--green:#00d632;--ink:#111;--muted:#707070;--line:#e9e9e9;--bg:#00d632}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 button,input{font:inherit}.app{width:100%;max-width:480px;min-height:100vh;margin:auto;background:#fff;display:flex;flex-direction:column}
-header{padding:18px 20px 8px;display:flex;align-items:center;justify-content:space-between}
-.avatar{width:40px;height:40px;border-radius:50%;background:#151515;color:#fff;display:grid;place-items:center;font-weight:800}
+header{padding:16px 20px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--green)}
+.brand{font-size:25px;font-weight:900;letter-spacing:-1.2px;color:#111}.brand span{font-weight:500}.avatar{width:40px;height:40px;border-radius:50%;background:#151515;color:#fff;display:grid;place-items:center;font-weight:800}
 .icon{width:42px;height:42px;border:0;background:transparent;border-radius:50%;font-size:24px}
-main{flex:1;padding:8px 20px 92px;overflow:auto}.screen{display:none}.screen.active{display:block}
+main{flex:1;padding:8px 20px 92px;overflow:auto;background:#fff;border-radius:26px 26px 0 0}.screen{display:none}.screen.active{display:block}
 .balance{text-align:center;padding:20px 0 8px}.balance small{display:block;color:var(--muted);font-weight:600}.balance strong{display:block;font-size:45px;letter-spacing:-2px;margin-top:3px}
 .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 24px}.quick button{border:0;background:#f1f1f1;border-radius:18px;padding:15px 8px;font-weight:750}.quick span{display:block;font-size:23px;margin-bottom:4px}
 .card{border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0;background:#fff}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.muted{color:var(--muted)}h2{font-size:28px;letter-spacing:-.7px;margin:10px 0 20px}
@@ -22,7 +22,7 @@ main{flex:1;padding:8px 20px 92px;overflow:auto}.screen{display:none}.screen.act
 .activity-item{padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:13px}.circle{width:44px;height:44px;border-radius:50%;background:#ededed;display:grid;place-items:center;font-weight:800}.activity-item .grow{flex:1}.amount-in{color:#138a36}.amount-out{color:#111}
 .tabs{display:flex;gap:7px;margin-bottom:16px}.tabs button{border:0;background:#f0f0f0;border-radius:999px;padding:9px 15px;font-weight:700}.tabs button.active{background:#111;color:#fff}
 .card-visual{height:205px;border-radius:24px;background:#111;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 12px 28px #0002}.cash-logo{font-size:26px;font-weight:900}.card-number{font-size:20px;letter-spacing:2px}.card-row{display:flex;justify-content:space-between}
-.settings{list-style:none;margin:0;padding:0}.settings li{padding:19px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:650}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:78px;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}.bottom button{border:0;background:#fff;color:#777;font-size:11px;font-weight:700}.bottom button b{display:block;font-size:24px;line-height:27px;color:#777}.bottom button.active,.bottom button.active b{color:#111}
+.settings{list-style:none;margin:0;padding:0}.settings li{padding:19px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-weight:650}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:78px;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}.bottom button{border:0;background:#fff;color:#777;font-size:11px;font-weight:700}.bottom button b{display:block;font-size:24px;line-height:27px;color:#777}.bottom button.active,.bottom button.active b{color:#00a82d}
 .modal{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:5}.sheet{width:100%;max-width:480px;margin:auto;background:#fff;border-radius:26px 26px 0 0;padding:22px 20px 30px}.sheet input{width:100%;padding:16px;border:1px solid #ddd;border-radius:16px;margin:6px 0 10px;outline:0}.sheet .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .notice{font-size:11px;color:#999;text-align:center;margin:28px 0}
 @media (min-width:600px){body{padding:20px 0}.app{border-radius:28px;box-shadow:0 15px 60px #0001;min-height:calc(100vh - 40px)}}
@@ -30,7 +30,7 @@ main{flex:1;padding:8px 20px 92px;overflow:auto}.screen{display:none}.screen.act
 </head>
 <body>
 <div class="app">
-<header><button class="icon" onclick="show('profile')">☰</button><div class="avatar">J</div><button class="icon" onclick="alert('No new notifications')">♢</button></header>
+<header><button class="icon" onclick="show('profile')">☰</button><div class="brand">cash<span>app</span></div><button class="icon" id="installBtn" onclick="installApp()" style="display:none">＋</button></header>
 <main>
 <section id="home" class="screen active">
 <div class="balance"><small>Cash balance</small><strong id="balance">$6,724.78</strong></div>
@@ -81,7 +81,11 @@ function back(){raw=raw.slice(0,-1);render()}
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));render()}
 function send(){let who=recipient.value.trim(),amt=parseFloat(raw);if(!who)return alert('Choose a recipient');if(!amt||amt<=0)return alert('Enter an amount');if(amt>state.balance)return alert('Insufficient balance');state.balance-=amt;state.activity.unshift([who,'-'+money(amt)]);raw='';recipient.value='';save();show('activity')}
 function requestMoney(){show('pay');alert('Enter an amount and recipient to create a request.')}
-render();show('home');if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
+render();show('home');let deferredInstall=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;installBtn.style.display='block'});
+async function installApp(){if(!deferredInstall){alert('Use your browser menu and choose Add to Home screen.');return}deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;installBtn.style.display='none'}
+window.addEventListener('appinstalled',()=>{installBtn.style.display='none'});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
 </script>
 </body>
 </html>
