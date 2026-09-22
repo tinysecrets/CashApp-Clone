@@ -1,1 +1,1 @@
-{"name":"Cash App Clone Demo","short_name":"Cash Demo","start_url":"./index.html","display":"standalone","background_color":"#ffffff","theme_color":"#00d64f"}
+{"name":"Cash App","short_name":"Cash App","start_url":"./","scope":"./","display":"standalone","background_color":"#00d632","theme_color":"#00d632","description":"Cash App-style mobile UI replica","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
